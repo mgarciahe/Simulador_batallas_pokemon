@@ -22,7 +22,7 @@ def mostrar_catalogo_disponible():
     Imprime en la consola el catálogo de Pokémon disponibles de forma tabulada.
     """
     print("\n" + "="*45)
-    print("         CATÁLOGO POKÉMON OFICIAL")
+    print("         CATÁLOGO POKÉMON OFICIAL")  
     print("="*45)
     
     for clave, datos in CATALOGO_POKEMON.items():
