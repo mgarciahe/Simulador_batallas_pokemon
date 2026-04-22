@@ -63,15 +63,18 @@ class Pokemon(ABC):
 
     #Metodo para defender consume 5 de energia
     def defender(self):
-        if self.energia_actual >= 5
+        if self.energia_actual >= 5:
             self.energia_actual -= 5 
             self.defendiendo = True
-            print (f"{self.nombre} esta en modo defensa")
-
+            print (f"{self.nombre} esta en modo defensa, el siguiente ataque solamente le hara 50% de daño")
+        else:
+            print(f"{self.nombre} No tiene energia para atacar")
+            
     #Metodo descansar aumenta la energia en un 20
     def descansar(self):
         self.energia_actual += 20 
         print(f"{self.nombre} a recuperado 20 puntos de energia")
+        print(f"{self.nombre} a recuperado energia [HP: {self.hp_actual}/{self.hp_maximo}] | [EP: {self.energia_actual}/{self.energia_maxima}]")
     
     #Creamos el metodo Abstracto Atacar, todos los hijos lo heredan pero lo usan diferente lo dejamos en pass
     def atacar(self, oponente):

@@ -34,7 +34,7 @@ class PokemonAgua(Pokemon):
 
         #le restamos el daño al oponente
         oponente.hp_actual = oponente.hp_actual - dano
-        print(f"{self.nombre} ataca y causa {dano} de daño.")
+        print(f"{self.nombre} usa un ataque de agua y causa {dano} de daño.")
 
 
 class PokemonFuego(Pokemon):
@@ -112,6 +112,8 @@ class PokemonElectrico(Pokemon):
         # Se utiliza random.random() para generar un numero aleatorio de 0 a 1.
         #Utilizamos un if, para indicar si el valor aleatorio es menor al 0.2 se activa probabilidad del 20%
         if random.random() < 0.2:
-            print(f"{oponente.nombre} ha sido paralizado y pierde el siguiente turno")
+            print(f"¡Ataque super efectivo! {oponente.nombre} ha sido paralizado y pierde el siguiente turno")
             oponente.paralizado = True
+        else:
+            print("El ataque no ha sido muy efectivo")
 
