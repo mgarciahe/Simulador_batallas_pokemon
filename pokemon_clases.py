@@ -41,7 +41,7 @@ class PokemonFuego(Pokemon):
 
     def atacar(self, oponente):
 
-        if self.energia_actual <= 15:
+        if self.energia_actual < 15:
             print(f"{self.nombre} No tiene energia para atacar")
             return
 
@@ -68,7 +68,7 @@ class PokemonPlanta(Pokemon):
 
     def atacar(self, oponente):
 
-        if self.energia_actual <= 15:
+        if self.energia_actual < 15:
             print(f"{self.nombre} No tiene energia para atacar")
             return
 
@@ -93,7 +93,7 @@ class PokemonElectrico(Pokemon):
 
     def atacar(self, oponente):
 
-        if self.energia_actual <= 15:
+        if self.energia_actual < 15:
             print(f"{self.nombre} No tiene energia para atacar")
             return
 

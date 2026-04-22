@@ -35,20 +35,21 @@ def elegir_pokemon(jugador):
 
     #Con ciclo while dejamos que el jugador ingrese el numero correcto de lo contrario le damos el error
     while True:
-        
-        #agregamos el valor opcion para verificar si el dato que el jugador esta ingresando esta en el diccionario
-        opcion = input(f"Jugador {jugador}, elige el número de tu Pokémon: ")
+        try:
+            #agregamos el valor opcion para verificar si el dato que el jugador esta ingresando esta en el diccionario
+            opcion = input(f"Jugador {jugador}, elige el número de tu Pokémon: ")
 
-        #Si el dato ingresado esta en el catalogo, el parametro datos extrae la informacion del diccionario catalogo
-        #creamos la variable pokemon el cual traera al metodo crear_pokemon
-        if opcion in CATALOGO_POKEMON:
-            datos = CATALOGO_POKEMON[opcion]
-            pokemon = crear_pokemon(datos)
-            print(f"¡Has seleccionado a {pokemon.nombre}!")
-            return pokemon
-        else:
-            print("Opción inválida. Intenta de nuevo.")
-
+            #Si el dato ingresado esta en el catalogo, el parametro datos extrae la informacion del diccionario catalogo
+            #creamos la variable pokemon el cual traera al metodo crear_pokemon
+            if opcion in CATALOGO_POKEMON:
+                datos = CATALOGO_POKEMON[opcion]
+                pokemon = crear_pokemon(datos)
+                print(f"¡Has seleccionado a {pokemon.nombre}!")
+                return pokemon
+            else:
+                print("Opción inválida. Intenta de nuevo.")
+        except Exception:
+            print("Entrada invalida, intenta nuevamente")
 #Creamos el metodo turno para indicar las acciones a realizar por turno, aca recibe dos obejtos al pokemon y al oponente
 
 def turno(pokemon, oponente):
