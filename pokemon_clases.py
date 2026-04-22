@@ -1,7 +1,7 @@
 #Importamos del archivo local importamos la clase Pokemon
 
 from ClaseBasePokemon import Pokemon
-#Importamos random para utilizarlo con el pokemon Electrico
+#Importamos random para utilizarlo con el pokemon Electrico #Se utilizo IA para conocer mas del uso de esta biblioteca
 import random   
 
 #creamos las diferentes clases de pokemon, estas son las clases hijas
@@ -91,4 +91,27 @@ class PokemonPlanta(Pokemon):
 
 class PokemonElectrico(Pokemon):
 
-    def atacar(self):
+    def atacar(self, oponente):
+
+        if self.energia_actual <= 15:
+            print(f"{self.nombre} No tiene energia para atacar")
+            return
+
+        self.energia_actual -= 15
+
+        dano = 10            
+
+        if oponente.defendiendo:
+            dano //= 2
+            oponente.defendiendo = False
+
+        oponente.hp_actual = oponente.hp_actual - dano
+        print(f"{self.nombre} ataca y causa {dano} de daño.")
+
+        #Como se indico al inicio del codigo utilizamos la IA para conocer el uso de la biblioteca random
+        # Se utiliza random.random() para generar un numero aleatorio de 0 a 1.
+        #Utilizamos un if, para indicar si el valor aleatorio es menor al 0.2 se activa probabilidad del 20%
+        if random.random() < 0.2:
+            print(f"{oponente.nombre} ha sido paralizado y pierde el siguiente turno")
+            oponente.paralizado = True
+

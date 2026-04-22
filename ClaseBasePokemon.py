@@ -19,6 +19,8 @@ class Pokemon(ABC):
 
         #atributo para todas las clases, actuara como escudo para el siguiente ataque, lo cambiamos a True en el metodo defender
         self.defendiendo = False
+        #atributo para todas las clases, actuara en el metodo atacar cuando usemos pokemon electrico
+        self.paralizado = False
 
     @property
     def hp_actual(self):
