@@ -83,14 +83,17 @@ def turno(pokemon, oponente):
             # Else por si el usuario ingresa otro numero
             if opcion == 1:
                 pokemon.atacar(oponente)
+                pokemon.mostrar_estado()
                 break
 
             elif opcion == 2:
                 pokemon.defender()
+                pokemon.mostrar_estado()
                 break
 
             elif opcion == 3:
                 pokemon.descansar()
+                pokemon.mostrar_estado()
                 break
             
             else:
@@ -124,12 +127,15 @@ def turno_computadora(pokemon, oponente):
 
     if opcion == 1:
         pokemon.atacar(oponente)
+        pokemon.mostrar_estado()
 
     elif opcion == 2:
         pokemon.defender()
+        pokemon.mostrar_estado()
 
     else:
         pokemon.descansar()
+        pokemon.mostrar_estado()
 
 
 #Creamos el metodo de combate, vamos a indicarle que necesitamos dos parametros jugador 1
@@ -222,7 +228,4 @@ def main():
         pokemon_jugador2 = elegir_pokemon(2)
         combate(pokemon_jugador1, pokemon_jugador2)
 
-#Si este archivo es el principal → ejecuta main()
-if __name__ == "__main__":
-    main()
-
+main()

@@ -29,7 +29,7 @@ class Pokemon(ABC):
 
     @hp_actual.setter
     def hp_actual(self, valor):
-
+        #condicional para no dar valores incorrectos
         if valor < 0:
             self.__hp_actual = 0
         elif valor > self.hp_maximo:
@@ -74,7 +74,7 @@ class Pokemon(ABC):
     def descansar(self):
         self.energia_actual += 20 
         print(f"{self.nombre} a recuperado 20 puntos de energia")
-        print(f"{self.nombre} a recuperado energia [HP: {self.hp_actual}/{self.hp_maximo}] | [EP: {self.energia_actual}/{self.energia_maxima}]")
+        
     
     #Creamos el metodo Abstracto Atacar, todos los hijos lo heredan pero lo usan diferente lo dejamos en pass
     @abstractmethod
