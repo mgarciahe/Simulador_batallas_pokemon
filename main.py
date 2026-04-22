@@ -49,3 +49,51 @@ def elegir_pokemon(jugador):
         else:
             print("Opción inválida. Intenta de nuevo.")
 
+#Creamos el metodo turno para indicar las acciones a realizar por turno, aca recibe dos obejtos al pokemon y al oponente
+
+def turno(pokemon, oponente):
+
+    print(f"\n--- TURNO DE {pokemon.nombre} ---")
+
+    # Iniciamos con un condicional para verificar si el pokemon esta paralizado
+    if pokemon.paralizado:
+        pokemon.mostrar_estado()
+        print(f"{pokemon.nombre} está paralizado y pierde su turno.")
+        #Si el pokemon esta paralizado lo cambiamos a false para cambiar su estado.
+        pokemon.paralizado = False
+        return
+
+    #Mostramos los datos del pokemon, llamamos al metodo en clase base
+    pokemon.mostrar_estado()
+
+    #Creamos un ciclo que corra hasta que el jugador nos brinde una opcion valida
+    while True:
+
+        #Usamos try except, indicando ValueError si el jugador ingresa texto en lugar de numero
+        try:
+            #imprimimos los metodos y que el usuario eliga-
+            print("\n1. Atacar (Costo: 15 EP)")
+            print("2. Defender (Costo: 5 EP)")
+            print("3. Descansar (Restaura: 20 EP)\n")
+
+            opcion = int(input("Opción: "))
+
+            #Usamos el condicional if y si el usuario elige un valor que ejecute su metodo
+            # Else por si el usuario ingresa otro numero
+            if opcion == 1:
+                pokemon.atacar(oponente)
+                break
+
+            elif opcion == 2:
+                pokemon.defender()
+                break
+
+            elif opcion == 3:
+                pokemon.descansar()
+                break
+            
+            else:
+                print("Opción inválida.")
+
+        except ValueError:
+            print("Debes ingresar un número válido.")
