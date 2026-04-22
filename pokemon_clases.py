@@ -16,11 +16,12 @@ class PokemonAgua(Pokemon):
         self.energia_actual -= 15
         #agregamos una variable daño, daño sera de 15.
         #Siguiendo el ejemplo Squirtle (Agua) vs Charmander (Fuego), vemos que daño es de 30, por lo cual su valor sera de 15
-        
+        #dano sera igual a daño, pero la computadora de clase no me reconoce la ñ
         dano = 15
 
         #Usamos la funcion isinstance para indicar si el objeto pertenece a la clase, la usamos con un if
         #Nos indica si el objeto si pertece a esa clase entonces doble daño
+        #Agua inflige daño doble (x2) contra Fuego
 
         if isinstance (oponente, PokemonFuego):
             dano *= 2
@@ -33,18 +34,60 @@ class PokemonAgua(Pokemon):
 
         #le restamos el daño al oponente
         oponente.hp_actual = oponente.hp_actual - dano
-
-
-
+        print(f"{self.nombre} ataca y causa {dano} de daño.")
 
 
 class PokemonFuego(Pokemon):
 
-    def atacar(self):
+    def atacar(self, oponente):
+
+        if self.energia_actual <= 15:
+            print(f"{self.nombre} No tiene energia para atacar")
+            return
+
+        self.energia_actual -= 15
+
+        #Aca nos basamos en la parte del enunciado que indica:cualquier otra daño normal (x1).        
+        dano = 10            
+
+        #Fuego inflige daño doble (x2) contra Planta
+        if isinstance(oponente, PokemonPlanta):
+            dano *= 2 
+            print("¡Es super efectivo!")
+
+        if oponente.defendiendo:
+            dano //= 2
+            oponente.defendiendo = False
+
+        #le restamos el daño al oponente
+        oponente.hp_actual = oponente.hp_actual - dano
+        print(f"{self.nombre} ataca y causa {dano} de daño.")
+
 
 class PokemonPlanta(Pokemon):
 
-    def atacar(self):
+    def atacar(self, oponente):
+
+        if self.energia_actual <= 15:
+            print(f"{self.nombre} No tiene energia para atacar")
+            return
+
+        self.energia_actual -= 15
+
+        dano = 10            
+
+        #Planta inflige daño doble (x2) contra Agua
+        if isinstance(oponente, PokemonAgua):
+            dano *= 2 
+            print("¡Es super efectivo!")
+
+        if oponente.defendiendo:
+            dano //= 2
+            oponente.defendiendo = False
+
+        oponente.hp_actual = oponente.hp_actual - dano
+        print(f"{self.nombre} ataca y causa {dano} de daño.")
+
 
 class PokemonElectrico(Pokemon):
 
